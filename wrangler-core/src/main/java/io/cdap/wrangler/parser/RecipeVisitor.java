@@ -98,6 +98,32 @@ public final class RecipeVisitor extends DirectivesBaseVisitor<RecipeSymbol.Buil
   }
 
   /**
+   * A Directive can include byte size, this method extracts that token
+   * @param ctx
+   * @return
+   */
+  @Override
+  public RecipeSymbol.Builder visitByteSize(DirectivesParser.Byte_SizeContext ctx) {
+    String text = ctx.getText(); // e.g., "10MB"
+    Token token = new ByteSize(text);  // Custom parser class from Task B
+    builder.addToken(token);
+    return builder;
+  }
+
+  /**
+   * A Directive can include time duration, this method extracts that token
+   * @param ctx
+   * @return
+   */
+  @Override
+  public RecipeSymbol.Builder visitTimeDuration(DirectivesParser.Time_DurationContext ctx) {
+    String text = ctx.getText(); // e.g., "500ms"
+    Token token = new TimeDuration(text);
+    builder.addToken(token);
+    return builder;
+  }
+
+  /**
    * A Directive can include properties (which are a collection of key and value pairs),
    * this method extracts that token that is being identified as token of type <code>Properties</code>.
    */
