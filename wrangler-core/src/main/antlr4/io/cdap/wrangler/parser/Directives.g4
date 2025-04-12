@@ -140,7 +140,7 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
+ : String | Number | Column | Bool | BYTE_SIZE | TIME_DURATION
  ;
 
 ecommand
@@ -246,6 +246,33 @@ Pipe     : '|';
 BackSlash: '\\';
 Dollar   : '$';
 Tilde    : '~';
+
+
+// Byte Size Token
+BYTE_SIZE
+    : NUMBER BYTE_UNIT
+    ;
+
+//  Time Duration Token
+TIME_DURATION
+    : NUMBER TIME_UNIT
+    ;
+
+fragment BYTE_UNIT
+    : ('KB' | 'MB' | 'GB' | 'TB' | 'kb' | 'mb' | 'gb' | 'tb')
+    ;
+
+fragment TIME_UNIT
+    : ('ms' | 's' | 'sec' | 'm' | 'min' | 'h' | 'hr' | 'hour')
+    ;
+
+fragment NUMBER
+    : DIGIT+ ('.' DIGIT+)?    // Matches both integers and decimals like 10, 1.5
+    ;
+
+fragment DIGIT
+    : [0-9]
+    ;
 
 
 Bool
