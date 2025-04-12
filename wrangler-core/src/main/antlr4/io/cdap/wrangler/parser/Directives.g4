@@ -140,7 +140,7 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool | BYTE_SIZE | TIME_DURATION
+ : String | Number | Column | Bool  | byteSizeArg| timeDurationArg
  ;
 
 ecommand
@@ -249,12 +249,12 @@ Tilde    : '~';
 
 
 // Byte Size Token
-BYTE_SIZE
+byteSizeArg
     : NUMBER BYTE_UNIT
     ;
 
 //  Time Duration Token
-TIME_DURATION
+timeDurationArg
     : NUMBER TIME_UNIT
     ;
 

@@ -60,8 +60,8 @@ public class ByteSize implements Token {
     @Override
     public JsonElement toJson() {
         JsonObject json = new JsonObject();
-        json.addProperty("original", value);
-        json.addProperty("bytes", getBytes());
+        json.addProperty("type", TokenType.BYTE_SIZE.name());
+        json.addProperty("value",value);
         return json;
     }
 }

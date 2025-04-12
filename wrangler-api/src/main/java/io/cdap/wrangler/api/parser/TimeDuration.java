@@ -61,8 +61,8 @@ public class TimeDuration implements Token {
     @Override
     public JsonElement toJson() {
         JsonObject json = new JsonObject();
-        json.addProperty("original", value);
-        json.addProperty("nanoseconds", getNanos());
+        json.addProperty("type", TokenType.TIME_DURATION.name());
+        json.addProperty("value",value);
         return json;
     }
 }

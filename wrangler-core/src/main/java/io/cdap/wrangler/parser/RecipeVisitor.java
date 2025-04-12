@@ -103,10 +103,8 @@ public final class RecipeVisitor extends DirectivesBaseVisitor<RecipeSymbol.Buil
    * @return
    */
   @Override
-  public RecipeSymbol.Builder visitByteSize(DirectivesParser.DirectivesParser.TextContext ctx) {
-    String text = ctx.getText(); // e.g., "10MB"
-    Token token = new ByteSize(text);  // Custom parser class from Task B
-    builder.addToken(token);
+  public RecipeSymbol.Builder visitByteSizeArg(DirectivesParser.ByteSizeArgContext ctx) {
+    builder.addToken(new ByteSize(ctx.getText()));
     return builder;
   }
 
@@ -116,10 +114,8 @@ public final class RecipeVisitor extends DirectivesBaseVisitor<RecipeSymbol.Buil
    * @return
    */
   @Override
-  public RecipeSymbol.Builder visitTimeDuration(DirectivesParser.TextContext ctx) {
-    String text = ctx.getText(); // e.g., "500ms"
-    Token token = new TimeDuration(text);
-    builder.addToken(token);
+  public RecipeSymbol.Builder visitTimeDurationArg(DirectivesParser.TimeDurationArgContext ctx) {
+    builder.addToken(new TimeDuration(ctx.getText()));
     return builder;
   }
 
