@@ -18,7 +18,9 @@ package io.cdap.wrangler.api.parser;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
+/**
+ * Represents a time duration token.
+ */
 public class TimeDuration implements Token {
     private final String value;
     private final double timeInNanos;
@@ -62,7 +64,7 @@ public class TimeDuration implements Token {
     public JsonElement toJson() {
         JsonObject json = new JsonObject();
         json.addProperty("type", TokenType.TIME_DURATION.name());
-        json.addProperty("value",value);
+        json.addProperty("value", value);
         return json;
     }
 }

@@ -18,7 +18,9 @@ package io.cdap.wrangler.api.parser;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
+/**
+ * Represents a byte size token.
+ */
 public class ByteSize implements Token {
     private final String value;
     private final double sizeInBytes;
@@ -61,7 +63,7 @@ public class ByteSize implements Token {
     public JsonElement toJson() {
         JsonObject json = new JsonObject();
         json.addProperty("type", TokenType.BYTE_SIZE.name());
-        json.addProperty("value",value);
+        json.addProperty("value", value);
         return json;
     }
 }
